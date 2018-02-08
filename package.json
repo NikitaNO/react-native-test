@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "pg": "^7.4.1",
+    "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-native": "0.53.0",
     "react-navigation": "^1.0.0",
@@ -29,7 +30,7 @@
   },
   "rnpm": {
     "assets": [
-	    "./src/mobile/assets/fonts/"
+      "./src/mobile/assets/fonts/"
     ]
   }
 }
