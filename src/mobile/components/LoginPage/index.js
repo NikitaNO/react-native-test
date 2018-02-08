@@ -4,6 +4,8 @@ import {
   Text
 } from 'react-native'
 
+import Page from '../../common/components/Page'
+import LoginForm from './form'
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -12,9 +14,9 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Heeeeey login page!</Text>
-      </View>
+      <Page>
+        <LoginForm />
+      </Page>
     );
   }
 };

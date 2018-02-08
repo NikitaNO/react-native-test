@@ -14,10 +14,6 @@ class RegisterForm extends React.Component {
 
   state = {
     form: {
-      Name: {
-        value: '',
-        isRequired: true
-      },
       Email: {
         value: '',
         isRequired: true
@@ -26,10 +22,6 @@ class RegisterForm extends React.Component {
         value: '',
         isRequired: true
       },
-      Phone: {
-        value: '',
-        isRequired: false
-      }
     }
   }
 
@@ -66,12 +58,6 @@ class RegisterForm extends React.Component {
     console.log(form);
   }
 
-  validateName = (val) => {
-    const {length} = val;
-
-    if(length >= 2 && length <= 255) return true;
-  }
-
   validateEmail = (val) => {
     return validator.isEmail(val);
   }
@@ -80,10 +66,6 @@ class RegisterForm extends React.Component {
     const {length} = val;
     
     if(length >= 8 && length <= 50) return true;
-  }
-
-  validatePhone = (val) => {
-    return validator.isMobilePhone(val, 'uk-UA') || validator.isEmpty(val);
   }
 
   render() {
@@ -95,12 +77,6 @@ class RegisterForm extends React.Component {
           keyboardShouldPersistTaps='handled'
           contentContainerStyle={styles.scrollContainer}>
 
-            <Field 
-              label="Name"
-              errorMessage="Between 2 and 255 characters"
-              onChange={this.handleChange}
-              validateFunc={this.validateName}
-              isRequired={true}/>
 
             <Field 
               label="Email"
@@ -117,11 +93,6 @@ class RegisterForm extends React.Component {
               validateFunc={this.validatePassword}         
               isRequired={true}/>
 
-            <Field 
-              label="Phone"
-              errorMessage="Please write a valid phone"
-              onChange={this.handleChange}
-              validateFunc={this.validatePhone}/>
 
         </ScrollView>
 
