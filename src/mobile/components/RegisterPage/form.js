@@ -125,7 +125,9 @@ class RegisterForm extends React.Component {
 
         </ScrollView>
 
-        <Button submitHandler={this.submitHandler}/>
+        <Button 
+          label="Sign Up"
+          submitHandler={this.submitHandler}/>
 
       </View>
     );

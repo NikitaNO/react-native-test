@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 
 class SubmitButton extends React.Component {
   render() {
-    const {submitHandler} = this.props;
+    const {submitHandler, label} = this.props;
 
     return (
       <TouchableOpacity 
@@ -17,7 +17,7 @@ class SubmitButton extends React.Component {
         style={styles.buttonWrap}>
         <View style={styles.button}>
           <Text style={styles.buttonText}>
-            SIGN UP
+           {label.toUpperCase()}
           </Text>
         </View>
       </TouchableOpacity>
@@ -26,6 +26,7 @@ class SubmitButton extends React.Component {
 };
 
 SubmitButton.propTypes = {
+  label: PropTypes.string.isRequired,
   submitHandler: PropTypes.func.isRequired
 };
 
