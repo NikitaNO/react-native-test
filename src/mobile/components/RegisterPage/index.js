@@ -1,9 +1,11 @@
 import React from 'react'
 import {
   View,
-  Text
+  Platform,
 } from 'react-native'
 
+import Page from '../../common/components/Page'
+import RegisterForm from './form'
 
 class RegisterPage extends React.Component {
   constructor(props) {
@@ -12,9 +14,9 @@ class RegisterPage extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Heeeeey register page!</Text>
-      </View>
+      <Page>
+        <RegisterForm />
+      </Page>
     );
   }
 };
