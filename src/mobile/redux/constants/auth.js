@@ -1,0 +1,9 @@
+export const LOG_IN = 'LOG_IN'
+export const LOG_IN_PENDING = 'LOG_IN_PENDING'
+export const LOG_IN_FULFILLED = 'LOG_IN_FULFILLED'
+export const LOG_IN_REJECTED = 'LOG_IN_REJECTED'
+
+export const SIGN_UP = 'SIGN_UP'
+export const SIGN_UP_PENDING = 'SIGN_UP_PENDING'
+export const SIGN_UP_FULFILLED = 'SIGN_UP_FULFILLED'
+export const SIGN_UP_REJECTED = 'SIGN_UP_REJECTED'

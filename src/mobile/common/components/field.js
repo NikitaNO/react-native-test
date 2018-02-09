@@ -11,10 +11,15 @@ import validator from 'validator';
 
 class Field extends React.Component {
 
-  state = {
-    value: '',
-    hasError: false,
-    isValid: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: '',
+      hasError: false,
+      isValid: false,
+      errorMessage: props.errorMessage
+    }
   }
 
   componentWillMount() {
@@ -24,8 +29,8 @@ class Field extends React.Component {
     DeviceEventEmitter.addListener(`${label}ValidationError`, this.handleErrorValidation)    
   }
 
-  handleErrorValidation = () => {
-      this.setState({hasError: true, isValid: false});
+  handleErrorValidation = (msg) => {
+      this.setState({hasError: true, isValid: false, errorMessage: msg ? msg : this.props.errorMessage});
   }
 
   handleSuccessValidation = () => {
@@ -40,8 +45,8 @@ class Field extends React.Component {
   }
 
   render() {
-    const {value, hasError, isValid} = this.state;
-    const {label, isRequired, errorMessage, isPassword} = this.props;
+    const {value, hasError, isValid, errorMessage} = this.state;
+    const {label, isRequired, isPassword} = this.props;
 
     const textSuccessStyles = isValid ? styles.textSuccess : {};
     const textErrorStyles = hasError ? styles.textError : {};

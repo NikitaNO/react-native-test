@@ -5,7 +5,10 @@ import {
   StyleSheet,
   DeviceEventEmitter
 } from 'react-native'
+import {connect} from 'react-redux'
 import validator from 'validator';
+
+import { registerAction } from '../../redux/actions/auth'
 
 import Field from '../../common/components/field'
 import Button from '../../common/components/submitButton'
@@ -63,7 +66,7 @@ class RegisterForm extends React.Component {
 
     if(hasError) return;
 
-    console.log(form);
+    this.props.signUp(form);
   }
 
   validateName = (val) => {
@@ -134,7 +137,18 @@ class RegisterForm extends React.Component {
   };
 };
 
-export default RegisterForm;
+const mapPropsToState = (state) => {
+  return {auth: state.auth};
+}
+
+const mapPropsToDispatch = (dispatch) => {
+  return {
+    signUp: (form) => dispatch(registerAction(form))
+  };
+}
+
+export default connect(mapPropsToState, mapPropsToDispatch)(RegisterForm);
+
 
 const styles = StyleSheet.create({
   scrollContainer: {

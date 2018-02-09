@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ImageBackground,
 } from 'react-native'
+import {connect} from 'react-redux'
 
 import Button from './button'
 import Page from '../../common/components/Page'
@@ -14,9 +15,24 @@ class HomePage extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.checkIfUserLoggedIn(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.checkIfUserLoggedIn(nextProps)
+  }
+
+  checkIfUserLoggedIn(props) {
+    const {isLogged} = props;
+    const {navigation} = this.props;
+
+    if(isLogged) {
+      navigation.navigate('UserPage');
+    }
+  }
+
   render() {
-    const backgroundImageSrc = require('../../assets/images/texture.png');
-    const logoSrc = require('../../assets/images/logo.png');
     const {navigation} = this.props;
 
     return (
@@ -38,4 +54,10 @@ class HomePage extends React.Component {
   }
 };
 
-export default HomePage;
+const mapPropsToState = (state) => {
+  return {
+    isLogged: state.auth.isLogged
+  };
+};
+
+export default connect(mapPropsToState)(HomePage);

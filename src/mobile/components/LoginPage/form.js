@@ -5,12 +5,15 @@ import {
   StyleSheet,
   DeviceEventEmitter
 } from 'react-native'
+import {connect} from 'react-redux'
 import validator from 'validator';
+
+import { logInAction } from '../../redux/actions/auth'
 
 import Field from '../../common/components/field'
 import Button from '../../common/components/submitButton'
 
-class RegisterForm extends React.Component {
+class LoginForm extends React.Component {
 
   state = {
     form: {
@@ -22,6 +25,12 @@ class RegisterForm extends React.Component {
         value: '',
         isRequired: true
       },
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.auth.errorMessage) {
+      DeviceEventEmitter.emit(`${nextProps.auth.errorItem}ValidationError`, nextProps.auth.errorMessage);
     }
   }
 
@@ -55,7 +64,7 @@ class RegisterForm extends React.Component {
 
     if(hasError) return;
 
-    console.log(form);
+    this.props.logIn(form);
   }
 
   validateEmail = (val) => {
@@ -105,7 +114,17 @@ class RegisterForm extends React.Component {
   };
 };
 
-export default RegisterForm;
+const mapPropsToState = (state) => {
+  return {auth: state.auth};
+}
+
+const mapPropsToDispatch = (dispatch) => {
+  return {
+    logIn: (form) => dispatch(logInAction(form))
+  };
+}
+
+export default connect(mapPropsToState, mapPropsToDispatch)(LoginForm);
 
 const styles = StyleSheet.create({
   scrollContainer: {

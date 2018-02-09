@@ -52,7 +52,7 @@ module.exports = new class {
       const user = result.rows[0];
 
       if(!user) {
-        res.status(404).send('User not found!');
+        res.status(404).send({msg: 'User not found!', item: 'Email'});
         return;
       }
 
@@ -61,7 +61,7 @@ module.exports = new class {
 
         res.status(200).send(user);
       } else {
-        res.status(401).send('Wrong password');                
+        res.status(401).send({msg: 'Wrong password', item: 'Password'});                
       };
      
     } catch (err) {
