@@ -1,10 +1,12 @@
 import axios from 'axios'
-const host = 'http://192.168.88.182:8000/auth'
+import config from '../../config'
+
+const {apiUrl} = config;
 
 export function logIn(data) {
-  return axios.post(`${host}/login`, data);
+  return axios.post(`${apiUrl}/login`, data);
 };
 
 export function signUp(data) {
-  return axios.post(`${host}/register`, data);
+  return axios.post(`${apiUrl}/register`, data);
 }
