@@ -26,6 +26,8 @@ To start the server, just run: `node .` in `src/api`
 
 ### The client
 
+To be able perform requests to the server, you should change url in `src/mobile/config/index.js`
+
 To be able to run the client side, you should do the following:
   
 ##### For android:
