@@ -33,12 +33,13 @@ To start the server, just run: `node .` in `src/api`
 
 To perform requests to the server, you should change the IP in `src/mobile/config/index.js` to the one where your server is running( if you run your server locally, it is you computer's IP ). To find out your IP, run `ifconfig` in the terminal.
 
-Mind you, after changing the IP, the file should look like this 
+Mind you, after changing the IP, the file should look like this:
 ```javascript
 export default {
   apiUrl: 'http://(your IP):(port)/auth'
 };
 ```
+Port is defined in `src/api/config/index.js`
 
 To be able to run the client side, you should do the following:
   
