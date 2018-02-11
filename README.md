@@ -36,7 +36,7 @@ To perform requests to the server, you should change the IP in `src/mobile/confi
 Mind you, after changing the IP, the file should look like this 
 ```javascript
 export default {
-  apiUrl: 'http://(your IP)/auth'
+  apiUrl: 'http://(your IP):(port)/auth'
 };
 ```
 
